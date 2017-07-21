@@ -17,10 +17,10 @@ var handler = function(req, res) {
 var app = http.createServer(handler);
 var io = socketio.listen(app);
 
-// use this io.configure() for Cloud9 to skip websockets
-io.configure(function () {
-  io.set('transports', ['xhr-polling']);
-});
+// // use this io.configure() for Cloud9 to skip websockets
+// io.configure(function () {
+//   io.set('transports', ['xhr-polling']);
+// });
 
 io.sockets.on('connection', function (socket) {
   setInterval(function() {
@@ -33,8 +33,10 @@ io.sockets.on('connection', function (socket) {
   });
 });
 
-// use process.env.PORT and process.env.IP for Cloud9
-// or replace with your port and (optionally) IP as necessary
-app.listen(process.env.PORT, process.env.IP);
+app.listen(65535);
+
+// // use process.env.PORT and process.env.IP for Cloud9
+// // or replace with your port and (optionally) IP as necessary
+// app.listen(process.env.PORT, process.env.IP);
 
 console.log('Server running!');
